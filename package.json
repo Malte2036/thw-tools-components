@@ -1,6 +1,6 @@
 {
   "name": "@malte2036/thw-tools-components",
-  "version": "0.2.30",
+  "version": "0.2.31",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/malte2036/thw-tools-components.git"
@@ -28,6 +28,7 @@
     "vitest": "^2.1.4"
   },
   "dependencies": {
+    "@tanstack/lit-virtual": "^3.10.8",
     "lit": "^3.1.2"
   },
   "description": "## VSCode editor support",
