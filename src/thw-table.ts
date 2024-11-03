@@ -12,6 +12,7 @@ import { thwColors, grayColors } from "./colors";
  * @param {Function} onValueClick - The callback function when a table row is clicked.
  * @param {number | undefined} selectedIndex - The index of the selected row.
  * @param {number | undefined} maxHeight - The maximum height of the table.
+ * @param {number | undefined} estimateSize - The estimated size of each row.
  */
 @customElement("thw-table")
 export class THWTable extends LitElement {
@@ -23,6 +24,7 @@ export class THWTable extends LitElement {
   ) => void;
   @property({ type: Number }) selectedIndex?: number;
   @property({ type: Number }) maxHeight?: number;
+  @property({ type: Number }) estimateSize: number = 41;
 
   private scrollElementRef: Ref<HTMLDivElement> = createRef();
   private virtualizerController: VirtualizerController<HTMLDivElement, Element>;
@@ -32,7 +34,7 @@ export class THWTable extends LitElement {
     this.virtualizerController = new VirtualizerController(this, {
       getScrollElement: () => this.scrollElementRef.value!,
       count: this.values.length,
-      estimateSize: () => 41,
+      estimateSize: () => this.estimateSize,
       overscan: 5,
     });
   }
@@ -151,7 +153,7 @@ export class THWTable extends LitElement {
       this.virtualizerController = new VirtualizerController(this, {
         getScrollElement: () => this.scrollElementRef.value!,
         count: this.values.length,
-        estimateSize: () => 41,
+        estimateSize: () => this.estimateSize,
         overscan: 5,
       });
     }
